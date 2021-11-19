@@ -4,11 +4,13 @@ from dataframe import getDataframe
 
 
 
+url ='https://graph.sop.strategio.cloud/v1beta1/relay'
+
 headers = {"x-hasura-admin-secret"  : "x5cHTWnDb7N2vh3eJZYzamgsUXBVkw",
            "content-type":"application/json"}
 
 def run_query(query,variables):
-    request = requests.post('https://graph.sop.strategio.cloud/v1beta1/relay', json={'query': query ,"variables":variables}, headers=headers,)
+    request = requests.post(url, json={'query': query ,"variables":variables}, headers=headers,)
     if request.status_code == 200:
         print("Ingresado Correctamente")
         return request.json()
@@ -26,11 +28,6 @@ query = """
 }
 
 """
-
-
-#variables ={
-#  "objects": {"nart":"89050-03400-41", "nartdesc":"NSFT PLS_JAR 200ML","clasificacion":"baseline","calendar_day":"2021-10-11","units":"0.216","netsales":"2.39092"}
-#}
 
 
 getDataframe()
